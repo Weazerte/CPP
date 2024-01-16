@@ -6,7 +6,7 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 21:01:28 by eaubry            #+#    #+#              #
-#    Updated: 2023/11/16 21:34:12 by eaubry           ###   ########.fr        #
+#    Updated: 2024/01/16 17:29:22 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@
 CXX = c++
 
 # Options de compilation
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 # Nom de l'exécutable
-TARGET = megaphone
+TARGET = PhoneBook
 
 # Liste des fichiers source
-SOURCES = main.cpp
+SOURCES = main.cpp PhoneBook.cpp Contact.cpp
 
 # Générer la liste des fichiers objets
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -38,5 +38,11 @@ $(TARGET): $(OBJECTS)
 
 # Nettoyer les fichiers temporaires
 clean:
+	rm -f $(OBJECTS)
+
+fclean: clean
 	rm -f $(TARGET) $(OBJECTS)
+
+re: fclean all
 	
+.PHONY:	all clean fclean re bonus
