@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:39:39 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/18 15:06:44 by eaubry           ###   ########.fr       */
+/*   Created: 2024/01/18 16:53:11 by eaubry            #+#    #+#             */
+/*   Updated: 2024/01/18 17:49:14 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Contact.hpp"
 
-int main()
+class HumanA
 {
-	Zombie zombie1;
-	
-	zombie1.randomChump();
+    private:
+        std::string name;
+        Weapon &Weapon;
+    public:
+        HumanA(std::string name, Weapon &weapon);
+        void attack() const ;
 }

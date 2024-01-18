@@ -6,15 +6,24 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:39:39 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/18 15:06:44 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/18 15:41:29 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+int main( void )
 {
-	Zombie zombie1;
-	
-	zombie1.randomChump();
+    Zombie *arrZombie;
+    int n = 5;
+    int i = 0;
+    
+    arrZombie = zombieHorde(n, "hiii");
+    while (i < n)
+    {
+        arrZombie[i].announce();
+        i++;
+    }
+    delete[] arrZombie;
+    return 0;
 }

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:39:39 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/18 15:06:44 by eaubry           ###   ########.fr       */
+/*   Created: 2024/01/18 16:53:50 by eaubry            #+#    #+#             */
+/*   Updated: 2024/01/18 17:23:06 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+# include <iostream>
+# include <string>
+# include <limits>
+# include <csignal>
+# include <cstdlib>
+# include <cstring>
+# include <iomanip>
 
-int main()
+class Weapon
 {
-	Zombie zombie1;
-	
-	zombie1.randomChump();
+    private:
+        std::string type;
+    public:
+        Weapon(void);
+        ~Weapon(void);
+        std::string getType() const;
+        void    setType(std::string type);
 }

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:39:39 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/18 15:06:44 by eaubry           ###   ########.fr       */
+/*   Created: 2024/01/18 16:53:41 by eaubry            #+#    #+#             */
+/*   Updated: 2024/01/18 17:23:22 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int main()
+Weapon::Weapon(void){};
+Weapon::~Weapon(void){};
+
+std::string    Weapon::getType() const
 {
-	Zombie zombie1;
-	
-	zombie1.randomChump();
+    return(this->Type);
+}
+
+void    Weapon::setType(std::string type)
+{
+    this->Type = type;
 }

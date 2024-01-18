@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:45:22 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/18 15:14:06 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/18 15:50:43 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ class Zombie
 		~Zombie(void);
 		void SetName(std::string name);
 		void announce( void ) const ;
-		void randomChump(std::string name);
 		
-}
+};
+Zombie* zombieHorde( int N, std::string name );
 
 #endif

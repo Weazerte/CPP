@@ -6,13 +6,13 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 17:39:53 by eaubry            #+#    #+#              #
-#    Updated: 2024/01/18 15:36:05 by eaubry           ###   ########.fr        #
+#    Updated: 2024/01/18 16:28:54 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = braniz
 
-SRC = main.cpp  Zombie.cpp newZombie.cpp randomChump.cpp
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++

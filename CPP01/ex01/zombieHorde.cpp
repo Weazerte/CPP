@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:39:39 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/18 15:06:44 by eaubry           ###   ########.fr       */
+/*   Created: 2024/01/18 15:12:55 by eaubry            #+#    #+#             */
+/*   Updated: 2024/01/18 15:41:05 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+Zombie* zombieHorde( int N, std::string name )
 {
-	Zombie zombie1;
-	
-	zombie1.randomChump();
+    Zombie *MultZombie = new Zombie[N];
+    for(int i = 0; i < N; i++)
+    {
+        MultZombie[i].SetName(name);
+    }
+    return (MultZombie);
 }

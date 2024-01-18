@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:39:39 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/18 15:06:44 by eaubry           ###   ########.fr       */
+/*   Created: 2024/01/18 17:38:38 by eaubry            #+#    #+#             */
+/*   Updated: 2024/01/18 17:49:08 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Contact.hpp"
 
-int main()
+class HumanB
 {
-	Zombie zombie1;
-	
-	zombie1.randomChump();
+    private:
+        std::string name;
+        Weapon &Weapon;
+    public:
+        HumanB(std::string name);
+        void setWeapon(Weapon &Weapon);
+        void attack() const;
 }
