@@ -6,19 +6,25 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:38:38 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/18 17:49:08 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/19 02:28:59 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
+
+#include "Weapon.hpp"
 
 class HumanB
 {
     private:
         std::string name;
-        Weapon &Weapon;
+        Weapon  *weapon;
     public:
+        HumanB();
         HumanB(std::string name);
-        void setWeapon(Weapon &Weapon);
-        void attack() const;
-}
+        void    setWeapon(Weapon *weapon);
+        void    attack() const;
+        
+};
+#endif
