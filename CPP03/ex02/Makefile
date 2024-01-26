@@ -6,13 +6,13 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 14:43:02 by eaubry            #+#    #+#              #
-#    Updated: 2024/01/26 18:36:26 by eaubry           ###   ########.fr        #
+#    Updated: 2024/01/26 18:36:03 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScavTrap
+NAME = FragTrap
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++
