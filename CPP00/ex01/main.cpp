@@ -6,17 +6,24 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 21:37:29 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/16 17:15:34 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/30 14:57:49 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+void signalHandler(int signum)
+{
+	std::cout << "Signal (" << signum << ") received." << std::endl;
+	exit(signum);
+}
 
 int	main(void)
 {
 	PhoneBook 	phonebook1;
 	std::string	str;
 
+	std::signal(SIGINT, signalHandler);
 	while (str != "EXIT")
 	{
 		std::cout << "Type 1 or ADD to add a new contact " << std::endl << "Type 2 or SEARCH to find a contact already registered " << std::endl << "Type 3 or EXIT to exit this program" << std::endl;

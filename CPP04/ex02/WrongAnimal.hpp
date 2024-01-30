@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 15:13:57 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/30 15:04:18 by eaubry           ###   ########.fr       */
+/*   Created: 2024/01/29 15:36:04 by eaubry            #+#    #+#             */
+/*   Updated: 2024/01/29 15:37:13 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef WRONGANIMAL_HPP
 
-#ifndef PHONEBOOK_HPP
+#define WRONGANIMAL_HPP
 
-# define PHONEBOOK_HPP
+#include <string>
+#include <iostream>
 
-#include "Contact.hpp"
-
-class	PhoneBook
+class WrongAnimal 
 {
-	private:
-		Contact	Contacts[8];
-		int		Index;
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	PrintInSearch(int i);
-		void	Print(Contact contact);
-		void	Search(void);
-		void	Add(void);
-		Contact	GetContact(int index);
+    protected:
+        std::string type;
+    public:
+        WrongAnimal();
+        WrongAnimal( WrongAnimal const & src );
+        virtual ~WrongAnimal();
+        WrongAnimal & operator=( WrongAnimal const & rhs );
+        std::string getType() const;
+        void makeSound() const;
 };
 
 #endif

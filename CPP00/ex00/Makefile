@@ -6,13 +6,13 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 21:01:28 by eaubry            #+#    #+#              #
-#    Updated: 2024/01/18 15:35:00 by eaubry           ###   ########.fr        #
+#    Updated: 2024/01/30 15:39:05 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = megaphone
 
-SRC = main.cpp
+SRC = megaphone.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++

@@ -15,14 +15,14 @@ NAME = Animal
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJ = $(SRC:.cpp=.o)
 
-CPP = c++
+CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o	: %.cpp
 	@$(CPP) $(FLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
-	@$(CPP) $(FLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(FLAGS) $(OBJ) -o $(NAME)
 
 all	: $(NAME)
 

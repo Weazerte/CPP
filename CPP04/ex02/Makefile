@@ -6,23 +6,23 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 14:43:02 by eaubry            #+#    #+#              #
-#    Updated: 2024/01/26 18:36:03 by eaubry           ###   ########.fr        #
+#    Updated: 2024/01/30 18:25:51 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = FragTrap
+NAME = Animal
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJ = $(SRC:.cpp=.o)
 
-CPP = c++
+CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o	: %.cpp
-	@$(CPP) $(FLAGS) -c $< -o $@
+	@$(CXX) $(FLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
-	@$(CPP) $(FLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(FLAGS) $(OBJ) -o $(NAME)
 
 all	: $(NAME)
 

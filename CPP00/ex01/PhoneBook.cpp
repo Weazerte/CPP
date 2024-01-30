@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 21:46:30 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/16 17:18:59 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:37:01 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	PhoneBook::Print(Contact contact)
 void	PhoneBook::PrintInSearch(int i)
 {
 	std::cout << std::setw(10) << i << "|";
-    std::cout << std::setw(10) << this->Contacts[i].GetFirstName() << "|";
-    std::cout << std::setw(10) << this->Contacts[i].GetLastName() << "|";
-    std::cout << std::setw(10) << this->Contacts[i].GetNickName() << "|";
+    std::cout << std::setw(10) << this->Contacts[i].GetFirstNamecpy() << "|";
+    std::cout << std::setw(10) << this->Contacts[i].GetLastNamecpy() << "|";
+    std::cout << std::setw(10) << this->Contacts[i].GetNickNamecpy() << "|";
     std::cout << std::endl;
 }
 
@@ -80,6 +80,7 @@ void	PhoneBook::Search(void)
 		PhoneBook::Search();
 	}
 }
+
 void PhoneBook::Add()
 {
 	std::string cpy;
@@ -89,40 +90,37 @@ void PhoneBook::Add()
 	if (std::cin.eof())
 		std::exit(0);
 	cpy = str;
+	Contacts[Index % 8].SetFirstName(str);
 	if (str.size() > 9)
 		cpy = str.substr(0,9) + ".";
-	Contacts[Index % 8].SetFirstName(cpy);
+	Contacts[Index % 8].SetFirstNamecpy(cpy);
 	std::cout << "What's your last name ?" << std::endl;
 	std::getline(std::cin, str);
 	if (std::cin.eof())
 		std::exit(0);
 	cpy = str;
+	Contacts[Index % 8].SetLastName(str);
 	if (str.size() > 9)
 		cpy = str.substr(0,9) + ".";
-	Contacts[Index % 8].SetLastName(cpy);
+	Contacts[Index % 8].SetLastNamecpy(cpy);
 	std::cout << "What's your nick name ?" << std::endl;
 	std::getline(std::cin, str);
 	if (std::cin.eof())
 		std::exit(0);
 	cpy = str;
+	Contacts[Index % 8].SetNickName(str);
 	if (str.size() > 9)
 		cpy = str.substr(0,9) + ".";
-	Contacts[Index % 8].SetNickName(cpy);
+	Contacts[Index % 8].SetNickNamecpy(cpy);
 	std::cout << "What's your phone number ?" << std::endl;
 	std::getline(std::cin, str);
 	if (std::cin.eof())
 		std::exit(0);
-	cpy = str;
-	if (str.size() > 9)
-		cpy = str.substr(0,9) + ".";
-	Contacts[Index % 8].SetPhoneNumber(cpy);
+	Contacts[Index % 8].SetPhoneNumber(str);
 	std::cout << "Tell me your darkest secret ?" << std::endl;
 	std::getline(std::cin, str);
 	if (std::cin.eof())
 		std::exit(0);
-	cpy = str;
-	if (str.size() > 9)
-		cpy = str.substr(0,9) + ".";
-	Contacts[Index % 8].SetSecret(cpy);
+	Contacts[Index % 8].SetSecret(str);
 	Index++;
 }

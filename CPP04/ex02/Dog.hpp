@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 15:13:57 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/30 15:04:18 by eaubry           ###   ########.fr       */
+/*   Created: 2024/01/29 13:52:23 by eaubry            #+#    #+#             */
+/*   Updated: 2024/01/29 15:57:37 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef DOG_HPP
 
-#ifndef PHONEBOOK_HPP
+#define DOG_HPP
 
-# define PHONEBOOK_HPP
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-#include "Contact.hpp"
-
-class	PhoneBook
+class Dog : public Animal
 {
-	private:
-		Contact	Contacts[8];
-		int		Index;
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	PrintInSearch(int i);
-		void	Print(Contact contact);
-		void	Search(void);
-		void	Add(void);
-		Contact	GetContact(int index);
+    private:
+        Brain *_brain;
+    public:
+        Dog();
+        Dog( Animal const & src );
+        virtual ~Dog();
+        Dog & operator=( Dog const & rhs );
+        void makeSound() const;
 };
 
 #endif

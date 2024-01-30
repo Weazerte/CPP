@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:41:58 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/16 15:38:33 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:17:42 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,21 @@ std::string	Contact::GetLastName(void) const
 std::string	Contact::GetNickName(void) const
 {
 	return (this->NickName);
+}
+
+std::string	Contact::GetFirstNamecpy(void) const
+{
+	return (this->FirstNamecpy);
+}
+
+std::string	Contact::GetLastNamecpy(void) const
+{
+	return (this->LastNamecpy);
+}
+
+std::string	Contact::GetNickNamecpy(void) const
+{
+	return (this->NickNamecpy);
 }
 
 std::string	Contact::GetPhoneNumber(void) const
@@ -63,6 +78,20 @@ void	Contact::SetLastName(std::string str)
 void	Contact::SetNickName(std::string str)
 {
 	this->NickName = str;
+}
+void	Contact::SetFirstNamecpy(std::string str)
+{
+	this->FirstNamecpy = str;
+}
+
+void	Contact::SetLastNamecpy(std::string str)
+{
+	this->LastNamecpy = str;
+}
+
+void	Contact::SetNickNamecpy(std::string str)
+{
+	this->NickNamecpy = str;
 }
 
 void	Contact::SetPhoneNumber(std::string str)

@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 15:13:57 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/30 15:04:18 by eaubry           ###   ########.fr       */
+/*   Created: 2024/01/29 15:38:14 by eaubry            #+#    #+#             */
+/*   Updated: 2024/01/29 15:39:22 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef WRONGCAT_HPP
 
-#ifndef PHONEBOOK_HPP
+#define WRONGCAT_HPP
 
-# define PHONEBOOK_HPP
+#include "WrongAnimal.hpp"
 
-#include "Contact.hpp"
-
-class	PhoneBook
+class WrongCat : public WrongAnimal
 {
-	private:
-		Contact	Contacts[8];
-		int		Index;
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	PrintInSearch(int i);
-		void	Print(Contact contact);
-		void	Search(void);
-		void	Add(void);
-		Contact	GetContact(int index);
+    public:
+        WrongCat();
+        WrongCat( WrongAnimal const & src );
+        virtual ~WrongCat();
+        WrongCat & operator=( WrongCat const & rhs );
+        std::string getType() const;
+        void makeSound() const;
 };
 
 #endif
