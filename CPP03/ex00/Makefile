@@ -6,7 +6,7 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 14:43:02 by eaubry            #+#    #+#              #
-#    Updated: 2024/01/25 16:33:58 by eaubry           ###   ########.fr        #
+#    Updated: 2024/02/01 16:32:56 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o	: %.cpp
-	@$(CPP) $(FLAGS) -c $< -o $@
+	@$(CXX) $(FLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
 	@$(CXX) $(FLAGS) $(OBJ) -o $(NAME)

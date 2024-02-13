@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:18:12 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/23 17:29:44 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/02/01 10:45:13 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ class Fixed
         int     toInt( void ) const; //convertit en entier
 };
 
-std::ostream & operator<<( std::ostream & o, Fixed const & i );
+std::ostream & operator<<( std::ostream & o, const Fixed& i );
 
 #endif

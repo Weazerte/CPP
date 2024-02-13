@@ -5,21 +5,21 @@
 #                                                     +:+ +:+         +:+      #
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/16 17:39:53 by eaubry            #+#    #+#              #
-#    Updated: 2024/01/18 15:51:25 by eaubry           ###   ########.fr        #
+#    Created: 2024/01/31 14:19:25 by eaubry            #+#    #+#              #
+#    Updated: 2024/01/31 14:20:21 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = braniz
+NAME = brainz
 
-SRC = main.cpp  Zombie.cpp zombieHorde.cpp
+SRC = main.cpp  Zombie.cpp zombieHorde.cpp 
 OBJ = $(SRC:.cpp=.o)
 
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o	: %.cpp
-	@$(CPP) $(FLAGS) -c $< -o $@
+	@$(CXX) $(FLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
 	@$(CXX) $(FLAGS) $(OBJ) -o $(NAME)

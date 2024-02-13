@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:58:17 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/26 18:20:44 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/02/07 14:24:47 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 
 int main()
 {
-    ClapTrap bot_Tibs("Le Tibs");
-    ScavTrap bot_MeHdi("MeHdi");
-    FragTrap bot_Bilal("Bilal");
+    FragTrap bot_Tibs("Le Tibs");
+    FragTrap bot_Bilal(bot_Tibs);
+    bot_Bilal.setName("Bilal");
     
-    bot_Tibs.attack(bot_MeHdi.getName());
+    bot_Tibs.attack(bot_Bilal.getName());
     if (bot_Tibs.getEnergy() >= 1)
-        bot_MeHdi.takeDamage(bot_Tibs.getAttackDmg());  
-    bot_MeHdi.beRepaired(8);
-    bot_Tibs.attack(bot_MeHdi.getName());
+        bot_Bilal.takeDamage(bot_Tibs.getAttackDmg());  
+    bot_Bilal.beRepaired(8);
+    bot_Tibs.attack(bot_Bilal.getName());
     if (bot_Tibs.getEnergy() >= 1)
-        bot_MeHdi.takeDamage(bot_Tibs.getAttackDmg()); 
-    bot_MeHdi.guardGate();
+        bot_Bilal.takeDamage(bot_Tibs.getAttackDmg());
     bot_Bilal.HighFivesGuys();
     return (0);
 }

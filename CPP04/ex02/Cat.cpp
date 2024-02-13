@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:53:32 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/30 14:51:35 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/31 16:19:07 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat() {
     this->_brain = new Brain();
 }
 
-Cat::Cat( Animal const & src ) {
+Cat::Cat(const Cat& src ) {
     std::cout << "Cat copy constructor called" << std::endl;
     *this = src;
 }

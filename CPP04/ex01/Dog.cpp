@@ -6,40 +6,47 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:54:43 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/30 14:52:18 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:46:31 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp" 
 
-Dog::Dog() {
-    std::cout << "Dog default constructor called" << std::endl;
-    this->type = "Dog";
-    this->_brain = new Brain();
+
+Dog::Dog( void ) : Animal( "Dog" )
+{
+    std::cout << this->type << " constructor called" << std::endl;
+    try {
+        this->_brain = new Brain();
+    }
+    catch (const std::bad_alloc& e) {
+        std::cout << "Memory Allocation is failed : " << e.what() << std::endl;
+    }
 }
 
-Dog::Dog( Animal const & src ) {
-    std::cout << "Dog copy constructor called" << std::endl;
+Dog::~Dog( void )
+{
+    delete  this->_brain;
+    std::cout << this->type << " destructor called" << std::endl;
+}
+
+void    Dog::makeSound( void ) const
+{
+    std::cout << "Woof" << std::endl;
+}
+
+Dog::Dog( const Dog& src )
+{
     *this = src;
 }
 
-Dog::~Dog() {
-    std::cout << "Dog destructor called" << std::endl;
-    delete this->_brain;
-}
-
-Dog & Dog::operator=( Dog const & rhs ) {
-    std::cout << "Dog assignation operator called" << std::endl;
-    if ( this != &rhs ) {
-        this->type = rhs.type;
-        this->_brain = new Brain();
-        for ( int i = 0; i < 100; i++ ) {
-            this->_brain->setIdea( i, rhs._brain->getIdea( i ) );
-        }
+Dog& Dog::operator=( const Dog& src )
+{
+    std::cout << "Dog copy called." << std::endl;
+    if (this != &src)
+    {
+        this->type = src.type;
+        this->_brain = new Brain( *src._brain );
     }
     return *this;
-}
-
-void Dog::makeSound() const {
-    std::cout << "Wouf" << std::endl;
 }

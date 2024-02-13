@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:55:54 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/30 14:52:49 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:19:58 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-
 int main( void )
 {
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    // const AAnimal d;
+    
+    const AAnimal* j = new Dog();
+    const AAnimal* i = new Cat();
 
     delete j;
     delete i;
@@ -28,14 +29,11 @@ int main( void )
         Dog tmp = basic;
     }
 
-    const Animal* animals[100];
-    for ( int k = 0; k < 100; k++ ) {
-        if ( k % 2 == 0 ) {
-            animals[k] = new Dog();
-        } else {
-            animals[k] = new Cat();
-        }
-    }
+    const AAnimal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
+    delete animals[0];
+    delete animals[1];
+    delete animals[2];
+    delete animals[3];
 
 
     return 0;

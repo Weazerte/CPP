@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:54:43 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/30 14:52:18 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/31 16:18:33 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Dog::Dog() {
     this->_brain = new Brain();
 }
 
-Dog::Dog( Animal const & src ) {
+Dog::Dog(const Dog& src ) {
     std::cout << "Dog copy constructor called" << std::endl;
     *this = src;
 }

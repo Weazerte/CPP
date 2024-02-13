@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:55:54 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/30 14:52:49 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:46:49 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int main( void )
             animals[k] = new Cat();
         }
     }
-
-
+    for ( int k = 0; k < 100; k++ ) {
+        delete animals[k];
+    }
     return 0;
 }

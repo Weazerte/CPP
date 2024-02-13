@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:52:23 by eaubry            #+#    #+#             */
-/*   Updated: 2024/01/29 15:57:37 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/01/31 16:18:12 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 #define DOG_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : public AAnimal
 {
     private:
         Brain *_brain;
     public:
         Dog();
-        Dog( Animal const & src );
-        virtual ~Dog();
-        Dog & operator=( Dog const & rhs );
+        ~Dog();
+        Dog(const Dog& src );
+        Dog& operator=(const Dog& rhs);
         void makeSound() const;
 };
 
