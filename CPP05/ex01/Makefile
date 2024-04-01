@@ -6,13 +6,13 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/03/22 16:48:36 by eaubry           ###   ########.fr        #
+#    Updated: 2024/04/01 19:48:12 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Form
 
-SRC = main.cpp Bureaucrat.cpp
+SRC = Bureaucrat.cpp Form.cpp main.cpp 
 OBJ = $(SRC:.cpp=.o)
 
 CXX = c++

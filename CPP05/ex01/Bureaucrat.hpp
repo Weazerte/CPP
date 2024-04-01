@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:37:15 by eaubry            #+#    #+#             */
-/*   Updated: 2024/03/25 18:04:54 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/04/01 19:15:13 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #define BUREAUCRAT_HPP
 
 #include "Form.hpp"
+
+class Form;
 
 class Bureaucrat  {
 
