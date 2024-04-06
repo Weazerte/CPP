@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:37:24 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/05 17:49:50 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/04/06 18:35:02 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,24 @@ void Bureaucrat::DecrementGrade()
     }
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
-    form.beSigned(*this);
+    if (this->getGrade() > form.getGradeToSign())
+        throw AForm::GradeTooLowException();
+    else if (form.isSigned() == 1)
+        throw AForm::FormSignedException();
+    else
+        form.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm const & form)
+{
+    if (this->getGrade() > form.getGradeToSign())
+        throw AForm::GradeTooLowException();
+    else if (form.isSigned() == 0)
+        throw AForm::FormNotSignedException();
+    else
+        std::cout << this->getName() << " executes " << form.getName() << std::endl;
 }
 
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()

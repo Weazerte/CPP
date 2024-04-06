@@ -6,19 +6,19 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 17:29:25 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/06 17:31:07 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/04/06 18:32:46 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
 AForm::AForm(): name_("default"), gradeToExecute_(150), gradeToSign_(150), isSigned_(false){
-    std::cout << "AForm " << this->name_ << " created" << std::endl;
+    std::cout << "Form " << this->name_ << " created" << std::endl;
 }
 
 AForm::AForm(const AForm &src): name_(src.getName() + "_copy"), isSigned_(false), gradeToSign_(src.getGradeToSign()), gradeToExecute_(src.getGradeToExecute())
 {
-	std::cout << "AForm Copy Constructor called to copy " << src.getName() <<
+	std::cout << "Form Copy Constructor called to copy " << src.getName() <<
 	" into " << this->getName() << std::endl;
 	*this = src;
 }
@@ -29,12 +29,12 @@ AForm::AForm(int gradeToSign, int gradeToExecute): name_("default"), isSigned_(f
 		throw(AForm::GradeTooLowException());
 	else if( gradeToSign_ < 1 || gradeToExecute_ < 1)
 		throw(AForm::GradeTooHighException());
-    std::cout << "AForm " << this->name_ << " created" << std::endl;
+    std::cout << "Form " << this->name_ << " created" << std::endl;
 }
 
 AForm::AForm(const std::string name): name_(name), isSigned_(false), gradeToSign_(150), gradeToExecute_(150)
 {
-	std::cout << "AForm " << this->name_ << " created" << std::endl;
+	std::cout << "Form " << this->name_ << " created" << std::endl;
 }
 
 AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute): name_(name), isSigned_(false), gradeToSign_(gradeToSign), gradeToExecute_(gradeToExecute)
@@ -44,12 +44,12 @@ AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute): name_
 	else if( gradeToSign_ < 1 || gradeToExecute_ < 1)
 		throw(AForm::GradeTooHighException());
         
-        std::cout << "AForm " << this->name_ << " created" << std::endl;
+        std::cout << "Form " << this->name_ << " created" << std::endl;
 }
 
 AForm::~AForm()
 {
-    std::cout << "AForm " << this->name_ << " destroyed" << std::endl;
+    std::cout << "Form " << this->name_ << " destroyed" << std::endl;
 }
 
 AForm &AForm::operator=(const AForm &src)
@@ -99,6 +99,16 @@ const char *AForm::GradeTooLowException::what(void) const throw()
 const char *AForm::GradeTooHighException::what(void) const throw()
 {
 	return ("Grade too high");
+};
+
+const char *AForm::FormNotSignedException::what(void) const throw()
+{
+    return ("Form is not signed");       
+};
+
+const char *AForm::FormSignedException::what(void) const throw()
+{
+    return ("Form is already signed");       
 };
 
 std::ostream & operator<<(std::ostream &o, AForm const &rhs)

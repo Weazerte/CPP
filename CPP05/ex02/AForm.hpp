@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:49:00 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/05 23:01:15 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/04/06 18:32:02 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,16 @@ class AForm{
 	        public:
 		        virtual const char *what() const throw();
 	    };
+        
+        class FormNotSignedException : public std::exception{
+            public:
+                virtual const char *what() const throw();
+        };
+        
+        class FormSignedException : public std::exception{
+            public:
+                virtual const char *what() const throw();
+        };
 };
 std::ostream & operator<<(std::ostream &o, AForm const &rhs);
 

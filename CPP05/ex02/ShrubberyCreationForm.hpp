@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 13:44:49 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/05 22:56:40 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/04/06 17:41:31 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #define SHRUBBERYCREATIONFORM_HPP
 
+#include <fstream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
