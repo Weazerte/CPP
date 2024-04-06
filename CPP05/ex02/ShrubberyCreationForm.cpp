@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 13:45:17 by eaubry            #+#    #+#             */
-/*   Updated: 2024/03/28 16:12:19 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/04/05 22:59:02 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
+
+void ShrubberyCreationForm::setTarget(std::string target) {
+    this->_target = target;
+}
+
+std::string ShrubberyCreationForm::getTarget() const {
+    return this->_target;
+}
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
     if (this->getIsSigned() == false)
