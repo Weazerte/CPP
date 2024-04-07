@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:49:19 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/06 17:28:39 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/04/07 13:42:33 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ Form &Form::operator=(const Form &src)
 	if (this == &src)
 		return *this;
 	return *this;
+}
+
+void Form::execute(Bureaucrat const &executor)const
+{
+	(void)executor;
 }
 
 void Form::beSigned(Bureaucrat &bureaucrat) {

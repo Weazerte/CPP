@@ -6,13 +6,20 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/04/07 12:42:20 by eaubry           ###   ########.fr        #
+#    Updated: 2024/04/07 13:34:50 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Form
 
-SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC =	main.cpp \
+		Intern.cpp \
+		Bureaucrat.cpp \
+		AForm.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp \
+		
 OBJ = $(SRC:.cpp=.o)
 
 SHRUBBERY	=	$(shell find . -name '*_shrubbery')
