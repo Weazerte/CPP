@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:39:10 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/08 16:55:35 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/04/23 13:46:21 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 #define FLOAT 5
 #define DOUBLE 6
 
-// classes
 
 class Conversion
 {
@@ -40,9 +39,8 @@ class Conversion
 		float _float;
 		double _double;
 
-		// Constructor
 		Conversion();
-		// Methods
+
 		int checkInput(void);
 		void convertInput(void);
 
@@ -52,33 +50,28 @@ class Conversion
 		void fromDouble(void);
 
 		void printOutput(void)const;
-
-		// Getter
+		
 		std::string getInput(void)const;
 		int getType(void)const;
 		char getChar(void)const;
 		int getInt(void)const;
 		float getFloat(void)const;
 		double getDouble(void)const;
-		// Setter
+
 	public:
-	// Constructors
+
 		Conversion(const std::string input);
 		Conversion(const Conversion &src);
-
-	// Deconstructors
+		
 		~Conversion();
 
-	// Overloaded Operators
 		Conversion &operator=(const Conversion &src);
 
-	//Exceptions
 	class ErrorException : public std::exception
 	{
 	public:
 		virtual const char *what() const throw();
 	};
-	// Public Methods
 };
 
 #endif
