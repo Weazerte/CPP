@@ -6,9 +6,12 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:39:10 by eaubry            #+#    #+#             */
-/*   Updated: 2024/05/01 19:56:47 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/01 20:25:45 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef SCALARCONVERT_HPP
+#define SCALARCONVERT_HPP
 
 #include <string>
 #include <iostream>
@@ -30,15 +33,16 @@ class ScalarConvert
 
 	public:
 		static void convert(std::string str);
-
+		
 		class ImpossibleException : public std::exception{
-            public:
-                virtual const char *what(std::string type) const throw();
-        };	
-		class nonDisplayableException : public std::exception{
-            public:
-                virtual const char *what(std::string type) const throw();
-        };
+    		public:
+        		virtual const char *what() const throw();
+    	}; 
+
+    	class nonDisplayableException : public std::exception{
+    		public:
+        		virtual const char *what() const throw();
+    	};
 };
 
 #endif

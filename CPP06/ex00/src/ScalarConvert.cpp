@@ -26,10 +26,13 @@ void ScalarConvert::convert(std::string str) {
     try {
         char c = static_cast<char>(std::atoi(str.c_str()));
         double d = std::atof(str.c_str());
-        if (c < 32 || c > 126)
-            throw nonDisplayableException(std::string("char"));
+        if (c < 32 || c > 126){
+			std::cout << "char : ";
+            throw nonDisplayableException();
+		}
         else if (d == -INFINITY || d == +INFINITY || std::isnan(d)) {
-            throw ImpossibleException("char");
+            std::cerr << "char : ";
+			throw ImpossibleException();
         }
         else
             std::cout << "char : '" << c << "'" << std::endl;
@@ -41,8 +44,10 @@ void ScalarConvert::convert(std::string str) {
     try {
         int i = std::atoi(str.c_str());
         double d = std::atof(str.c_str());
-        if (d == -INFINITY || d == +INFINITY || std::isnan(d))
-            throw ImpossibleException(std::string("int"));
+        if (d == -INFINITY || d == +INFINITY || std::isnan(d)){
+            std::cerr << "int : ";
+			throw ImpossibleException();
+		}
         else
             std::cout << "int : "<< i << std::endl;
     } catch (std::exception &e) {
@@ -66,10 +71,12 @@ void ScalarConvert::convert(std::string str) {
         std::cout << "double : " << d << std::endl;
 }
 
-const char *ScalarConvert::ImpossibleException::what(std::string type) const throw() {
-    std::cout << type << ": Impossible" << std::endl;
+const char *ScalarConvert::ImpossibleException::what() const throw() {
+    std::cout << "Impossible" << std::endl;
+	return "";
 }
 
-const char *ScalarConvert::nonDisplayableException::what(std::string type) const throw() {
-    std::cout << type << ": Non displayable" << std::endl;
+const char *ScalarConvert::nonDisplayableException::what() const throw() {
+	std::cout << "Non displayable" << std::endl;
+	return "";
 }

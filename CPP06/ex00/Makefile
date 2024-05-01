@@ -6,24 +6,24 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/05/01 19:58:05 by eaubry           ###   ########.fr        #
+#    Updated: 2024/05/01 20:27:22 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = convert
 
 SRCS =	main.cpp \
-		Scalarconvert.cpp
+		ScalarConvert.cpp \
 
-CC         = c++
-CFLAGS     = -Wall -Wextra -Werror -g3 -std=c++98
-OBJ_DIR = obj
+CC          = c++
+CFLAGS      = -Wall -Wextra -Werror -g3 -std=c++98
+OBJ_DIR     = obj
 INCLUDES_FOLDER = inc/
-SRC_FOLDER = src/
+SRC_FOLDER  = src/
 
-HEADERS       = $(wildcard $(INCLUDES_FOLDER)*.hpp)
+HEADERS     = $(wildcard $(INCLUDES_FOLDER)*.hpp)
 
-OBJS    = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
+OBJS        = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 all : $(NAME)
 
@@ -37,11 +37,11 @@ $(OBJ_DIR):
 	mkdir -p $@
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJS) $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY:            all clean fclean re
+.PHONY: all clean fclean re
