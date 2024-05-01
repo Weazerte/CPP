@@ -6,7 +6,7 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/04/27 15:58:54 by eaubry           ###   ########.fr        #
+#    Updated: 2024/05/01 20:03:54 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ OBJ_DIR = obj
 INCLUDES_FOLDER = inc/
 SRC_FOLDER = src/
 
+SHRUBBERY	=	$(shell find . -name '*_shrubbery')
+
 HEADERS = $(wildcard $(INCLUDES_FOLDER)*.hpp)
 
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
@@ -42,6 +44,7 @@ $(OBJ_DIR):
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(SHRUBBERY)
 
 fclean: clean
 	rm -f $(NAME)

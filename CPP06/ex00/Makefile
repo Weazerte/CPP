@@ -6,32 +6,42 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/04/08 16:54:11 by eaubry           ###   ########.fr        #
+#    Updated: 2024/05/01 19:58:05 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Form
+NAME = convert
 
-SRC =	main.cpp \
-		ScalarConvert.cpp
-		
-OBJ = $(SRC:.cpp=.o)
+SRCS =	main.cpp \
+		Scalarconvert.cpp
 
-CXX = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CC         = c++
+CFLAGS     = -Wall -Wextra -Werror -g3 -std=c++98
+OBJ_DIR = obj
+INCLUDES_FOLDER = inc/
+SRC_FOLDER = src/
 
-%.o	: %.cpp
-	$(CXX) $(FLAGS) -c $< -o $@
+HEADERS       = $(wildcard $(INCLUDES_FOLDER)*.hpp)
 
-$(NAME) : $(OBJ)
-	$(CXX) $(FLAGS) $(OBJ) -o $(NAME)
+OBJS    = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
-all	: $(NAME)
+all : $(NAME)
 
-clean :
-	rm -rf $(OBJ)
+$(NAME) : $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_FOLDER)%.cpp $(HEADERS) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $@
+
+clean:
+	rm -f $(OBJS)
+
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
+
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY:            all clean fclean re

@@ -6,17 +6,16 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:23:56 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/08 16:27:03 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/01 19:57:04 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConvert.hpp"
+#include "../inc/ScalarConvert.hpp"
 
-int main(int ac, char **av) {
-    if (ac != 2) {
-        std::cout << "Error: Wrong number of arguments" << std::endl;
-        return 1;
-    }
-    ScalarConvert sc(av[1]);
-    return 0;
+int main() {
+    ScalarConvert::convert("c");
+    ScalarConvert::convert("42");
+    ScalarConvert::convert("42.0f");
+    ScalarConvert::convert("42.0");
+    ScalarConvert::convert("-inff");
 }
