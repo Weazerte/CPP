@@ -4,19 +4,10 @@ Serializer::Serializer(){}
 
 Serializer::~Serializer(){}
 
-void *Serializer::serialize(Data *data){
-    char *raw = new char[sizeof(Data)];
-    Data *d = reinterpret_cast<Data *>(raw);
-
-    d->s1 = data->s1;
-    d->n = data->n;
-    d->s2 = data->s2;
-
-    return raw;
+uintptr_t *Serializer::serialize(Data *data){
+    return (reinterpret_cast<uintptr_t *>(data));
 }
 
-Data *Serializer::deserialize(void *raw){
-    Data *data = reinterpret_cast<Data *>(raw);
-
-    return data;
+Data *Serializer::deserialize(uintptr_t *raw){
+    return (reinterpret_cast<Data *>(raw));
 }

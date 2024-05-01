@@ -3,21 +3,22 @@
 
 #include <iostream>
 #include <string>
+#include <stdint.h> 
 
-struct Data
+typedef struct Data
 {
     std::string s1;
     int n;
     std::string s2;
-};
+} Data;
 
 class Serializer
 {
 public:
     Serializer();
     ~Serializer();
-    void *serialize(Data *data);
-    Data *deserialize(void *raw);
+    uintptr_t *serialize(Data *data);
+    Data *deserialize(uintptr_t *raw);
 };
 
 #endif
