@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   Whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:25:55 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/18 20:06:20 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:26:23 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATERVER_HPP
-
-#define WHATEVER_HPP
+#pragma once
 
 template <typename T>
 
@@ -42,5 +40,3 @@ const V& max(const V& a, const V& b)
     else
         return b;
 }
-
-#endif

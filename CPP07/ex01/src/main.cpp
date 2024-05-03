@@ -6,44 +6,48 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:14:20 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/18 21:00:31 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/03 12:06:28 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "../inc/Iter.hpp"
 
 
 void reverseChar(char &c)
 {
-    if (c >= 65 && c <= 90)
-	    c = std::toupper(static_cast<unsigned char>(c));
-    else if (c >= 97 && c <= 122)
-	    c = std::tolower(static_cast<unsigned char>(c));
+    if (std::islower(c))
+	    c = std::toupper(c);
+    else if (std::isupper(c))
+	    c = std::tolower(c);
 }
+
+struct printChar
+{
+	int i;
+	printChar() : i(0) {}
+	void operator()(const char &c)
+	{
+		std::cout << "\ni: " << i++ << " - ";
+		std::cout << c;
+	}
+};
 
 int main()
 {
 	char a[] = {'A', 'B', 'C'};
+	printChar p;
 
-	std::cout << "Original:" <<
-	"\n\ta[0]: " << a[0] <<
-	"\n\ta[1]: " << a[1] <<
-	"\n\ta[2]: " << a[2] <<
-	std::endl << std::endl;
+	std::cout << "Original:";
+	::iter(a, 3, p);
 
-	::iter(a, sizeof(a) / sizeof(char), reverseChar);
+	::iter(a, 3, reverseChar);
 
-	std::cout << "Changed:" <<
-	"\n\ta[0]: " << a[0] <<
-	"\n\ta[1]: " << a[1] <<
-	"\n\ta[2]: " << a[2] <<
-	std::endl << std::endl;
+	std::cout << "\nChanged:";
+	::iter(a, 3, p);
 
-	::iter(a, 2, reverseChar);
-
-	std::cout << "Changed:" <<
-	"\n\ta[0]: " << a[0] <<
-	"\n\ta[1]: " << a[1] <<
-	"\n\ta[2]: " << a[2] <<
-	std::endl << std::endl;
+	::iter(a, 3, reverseChar);
+	
+	std::cout << "\nChanged:";
+	::iter(a, 3, p);
+	
 }

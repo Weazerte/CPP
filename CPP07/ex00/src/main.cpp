@@ -6,11 +6,11 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:23:49 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/18 20:04:33 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:25:35 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "whatever.hpp"
+#include "../inc/Whatever.hpp"
 #include <iostream>
 
 int main( void ) {
