@@ -6,13 +6,14 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/05/08 17:58:57 by eaubry           ###   ########.fr        #
+#    Updated: 2024/05/09 14:50:31 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bitcoin
+NAME = btc
 
 SRCS =	main.cpp \
+		BitcoinExchange.cpp
 
 CC          = c++
 CFLAGS      = -Wall -Wextra -Werror -g3 -std=c++98

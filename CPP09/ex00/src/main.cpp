@@ -3,19 +3,19 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include "../inc/BitcoinExchange.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-        std::fstream fin;
-        fin.open("data.csv", std::ios::in);
-        size_t pos;
-        for (std::string line; fin >> line;) {
-            pos = line.find(",");
-            if (pos == std::string::npos)
-                continue;
-            std::string date = line.substr(0, pos);
-            std::string valuestr = line.substr(pos + 1);
-            std::cout << "date is : " << date << std::endl;
-            std::cout << "value is : " << valuestr << std::endl;
+    if (ac == 2){
+        Bitcoin data;
+
+        try {
+            data.readAndPars(av[1]);
         }
+        catch (std::exception &e)
+        {
+            std::cout << e.what() << std::endl;
+        }
+    }
 }

@@ -9,44 +9,93 @@ Bitcoin::~Bitcoin() {
 }
 
 Bitcoin::Bitcoin(const Bitcoin &src) {
-
+    for (std::map<std::string, std::string>::const_iterator it = src.dateToData.begin(); it != src.dateToData.end(); it++) {
+        this->dateToData[it->first] = it->second;
+    }
 }
 
-Bitcoin &Bitcoin::operator=(const Bitcoin &src) {
-
+Bitcoin& Bitcoin::operator=(const Bitcoin &src) {
+    if (this != &src)
+        return *this;
+    return *this;
 }
 
-bool Bitcoin::parseDate() {
-
+bool Bitcoin::parseDate(std::string& date) {
+    for(int i = 0; date[i]; i++) {
+        std::cout << date << std::endl;
+        if ((i == 4 || i == 7) && date[i] == '-')
+            continue;
+        else if (std::isdigit(date[i]))
+            continue;
+        else{
+            std::cout << date[i] << std::endl;
+            return false;
+        }
+    }
+    return true;
 }
 
-void Bitcoin::readAndPars(std::string fileName) {
+void Bitcoin::fillData() {
+    std::fstream fin;
+    fin.open("data.csv", std::ios::in);
+    if (!fin.is_open())
+        throw Bitcoin::NoSuchFileException("data.csv");
+    std::string line;
+    fin >> line;
+    for (line; fin >> line;) {
+        size_t pos = line.find(",");
+        dataCsv[line.substr(0, pos)] = line.substr(pos + 1);
+    }
+    fin.close();
+}
+
+void Bitcoin::readAndfill(std::string fileName) {
         std::fstream fin;
-        fin.open(fileName, std::ios::in);
+        fin.open(fileName.c_str(), std::ios::in);
+        if (!fin.is_open())
+            throw Bitcoin::NoSuchFileException(fileName);
         size_t pos;
-        for (std::string line; fin >> line;) {
-            pos = line.substr(",");
-            if (pos == string::npos)
-                throw Bitcoin::GlobalUsageException();
-            std::string date = line.substr(0, pos);
-            if (!parseDate(date))
-                throw Bitcoin::DateUsageException();
+        std::string line;
+        fin >> line;
+        if (line != "date | valeur")
+            throw Bitcoin::BadInputException();
+        for (line; fin >> line;) { 
+            size_t pos = line.find("|");
+            if (pos == std::string::npos) {
+                throw Bitcoin::NoSeparatorException(line);
+                continue;
+            }
             std::string valuestr = line.substr(pos + 1);
-            float valueF = std::atof(valuestr.c_str());
-            int valueI = std::atoi(valuestr.c_str());
-            dateToData[valuestr] = date;
+            dateToData[line.substr(0, pos)] = valuestr;
         }
         fin.close();
 }
 
-const char *Bitcoin::GlobalUsageException::what() const throw() {
-    return "Invalid usage in file : Usage : YYYY-MM-DD,Value";
+void Bitcoin::convert() {
+    int year;
+    int month;
+    int day;
+    int value;
+    for (std::map<std::string, std::string>::iterator it = dateToData.begin(); it != dateToData.end(), it++) {
+        try{
+            if (it->first.empty())
+                throw Bitcoin::BadInputException(it->first + "|" + it->second);
+            if (it->second.empty())
+                throw Bitcoin::BadInputException(it->first + "|" + it->second);
+            if (dataCsv.find(it->first) != dataCsv.end())
+                std::cout << it->first << " => " << 
+        }
+        catch (std::exception &e) {
+            e.what();
+        }
+    }
 }
 
-const char *Bitcoin::DateUsageException::what() const throw() {
+
+const char *Bitcoin::DateUsageException::what(void) const throw() {
     return "Usage : YYYY/MM/DD";
 }
 
-const char *Bitcoin::DateUsageException::what() const throw() {
-    return "value has to be a float or a positiv int";
+const char *Bitcoin::ValueUsageException::what(void) const throw() {
+    return "Value has to be between 0 and 1000";
 }

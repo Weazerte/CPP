@@ -52,7 +52,10 @@
 		"cstring": "cpp",
 		"ctime": "cpp",
 		"iomanip": "cpp",
-		"fstream": "cpp"
+		"fstream": "cpp",
+		"list": "cpp",
+		"map": "cpp",
+		"set": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }
