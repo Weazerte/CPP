@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 13:44:49 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/07 12:15:02 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/13 14:06:26 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ class ShrubberyCreationForm: public AForm
 
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
 
-        void setTarget(std::string target);
 		std::string getTarget(void)const;
         
 		void execute(Bureaucrat const &executor)const;

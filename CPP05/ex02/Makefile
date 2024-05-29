@@ -6,7 +6,7 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/04/27 16:00:52 by eaubry           ###   ########.fr        #
+#    Updated: 2024/05/13 13:56:50 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,20 +28,20 @@ OBJS    = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-    $(CXX) $(CFLAGS) $^ -o $@
+	$(CXX) $(CFLAGS) $^ -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_FOLDER)%.cpp $(HEADERS) | $(OBJ_DIR)
-    $(CXX) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
-    mkdir -p $@
+	mkdir -p $@
 
 clean:
-    rm -f $(OBJS)
+	rm -rf $(OBJS) $(OBJ_DIR)
 	rm -f $(SHRUBBERY)
 
 fclean: clean
-    rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

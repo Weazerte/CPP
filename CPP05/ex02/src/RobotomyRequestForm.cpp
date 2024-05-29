@@ -6,11 +6,13 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:05:24 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/27 16:04:15 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/13 15:39:10 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 // Constructors
 RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), _target("default"){}
@@ -36,7 +38,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor)const{
 		throw (Bureaucrat::GradeTooLowException());
 	else if (this->isSigned() == false)
 		throw (AForm::FormNotSignedException());
-	else if (robot_fail++ % 2)
+	robot_fail = std::rand();
+	if (robot_fail % 2)
 		std::cout << "BRRRRRRRRRRRRRR\n" << this->getTarget() << " was robotomized" << std::endl;
 	else
 		std::cout << "Robotomy failed" << std::endl;

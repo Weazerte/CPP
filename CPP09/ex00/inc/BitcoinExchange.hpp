@@ -18,7 +18,7 @@ class Bitcoin {
         Bitcoin(const Bitcoin &src);
         Bitcoin &operator=(const Bitcoin &src);
 
-        void readAndPars(std::string fileName);
+        void readAndFill(std::string fileName);
         bool parseDate(std::string& date);
         void fillData();
         void convert();

@@ -6,26 +6,40 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/04/05 18:01:14 by eaubry           ###   ########.fr        #
+#    Updated: 2024/05/13 13:46:55 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Form
-SRC = Bureaucrat.cpp Form.cpp main.cpp 
-OBJ = $(SRC:.cpp=.o)
 
-%.o	: %.cpp
-	$(CXX) $(FLAGS) -c $< -o $@
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 
-$(NAME) : $(OBJ)
-	$(CXX) $(FLAGS) $(OBJ) -o $(NAME)
+CFLAGS     = -Wall -Wextra -Werror -g3 -std=c++98
+OBJ_DIR = obj
+INCLUDES_FOLDER = inc/
+SRC_FOLDER = src/
 
-all	: $(NAME)
+HEADERS       = $(wildcard $(INCLUDES_FOLDER)*.hpp)
 
-clean :
-	rm -rf $(OBJ)
+OBJS    = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
+
+all : $(NAME)
+
+$(NAME) : $(OBJS)
+	$(CXX) $(CFLAGS) $^ -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_FOLDER)%.cpp $(HEADERS) | $(OBJ_DIR)
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $@
+
+clean:
+	rm -rf $(OBJS) $(OBJ_DIR)
+
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
+
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY:            all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:37:24 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/27 15:57:54 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/13 15:49:49 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,14 @@ void Bureaucrat::executeForm(AForm const & form)
         throw AForm::GradeTooLowException();
     else if (form.isSigned() == 0)
         throw AForm::FormNotSignedException();
-    else
-    {
+    try {
         form.execute(*this);
-        std::cout << this->getName() << " executes " << form.getName() << std::endl;
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr <<  "\033[33m" << this->getName() <<
+		" failedto execute " << e.what() << "\033[0m" << std::endl;
     }
 }
 

@@ -64,6 +64,7 @@ void Bitcoin::readAndfill(std::string fileName) {
             if (pos == std::string::npos) {
                 throw Bitcoin::NoSeparatorException(line);
                 continue;
+                
             }
             std::string valuestr = line.substr(pos + 1);
             dateToData[line.substr(0, pos)] = valuestr;

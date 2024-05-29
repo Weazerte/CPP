@@ -6,11 +6,11 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:35:18 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/05 17:59:35 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/13 13:44:40 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
 
 int main()
 {

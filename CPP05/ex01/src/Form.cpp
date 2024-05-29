@@ -6,13 +6,13 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:49:19 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/07 13:42:33 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/13 13:48:17 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "../inc/Form.hpp"
 
-Form::Form(): name_("default"), gradeToExecute_(150), gradeToSign_(150), isSigned_(false){
+Form::Form(): name_("default"), isSigned_(false), gradeToSign_(150), gradeToExecute_(150) {
     std::cout << "Form " << this->name_ << " created" << std::endl;
 }
 

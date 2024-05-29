@@ -6,11 +6,11 @@
 /*   By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 13:37:24 by eaubry            #+#    #+#             */
-/*   Updated: 2024/04/05 17:31:32 by eaubry           ###   ########.fr       */
+/*   Updated: 2024/05/13 13:47:22 by eaubry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void) : name_("default"), grade_(150) {
     std::cout << "Bureaucrat " << this->name_ << " grade " << this->getGrade() <<  " created" << std::endl;
