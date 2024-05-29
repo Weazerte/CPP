@@ -12,10 +12,9 @@
 
 #include "../inc/ScalarConvert.hpp"
 
-int main() {
-    ScalarConvert::convert("c");
-    ScalarConvert::convert("42");
-    ScalarConvert::convert("42.0f");
-    ScalarConvert::convert("42.0");
-    ScalarConvert::convert("-inff");
+int main(int ac, char **av) {
+	if (ac == 2) {
+		ScalarConvert::convert(av[1]);
+	}
+	return 0;
 }
