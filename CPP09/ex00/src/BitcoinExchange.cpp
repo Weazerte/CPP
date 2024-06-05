@@ -64,33 +64,33 @@ void Bitcoin::readAndfill(std::string fileName) {
             if (pos == std::string::npos) {
                 throw Bitcoin::NoSeparatorException(line);
                 continue;
-                
             }
             std::string valuestr = line.substr(pos + 1);
             dateToData[line.substr(0, pos)] = valuestr;
+            std::cout << "date : " << line.substr(0, pos) << "     value : " << valuestr << std::endl; 
         }
         fin.close();
 }
 
-void Bitcoin::convert() {
-    int year;
-    int month;
-    int day;
-    int value;
-    for (std::map<std::string, std::string>::iterator it = dateToData.begin(); it != dateToData.end(), it++) {
-        try{
-            if (it->first.empty())
-                throw Bitcoin::BadInputException(it->first + "|" + it->second);
-            if (it->second.empty())
-                throw Bitcoin::BadInputException(it->first + "|" + it->second);
-            if (dataCsv.find(it->first) != dataCsv.end())
-                std::cout << it->first << " => " << 
-        }
-        catch (std::exception &e) {
-            e.what();
-        }
-    }
-}
+// void Bitcoin::convert() {
+//     int year;
+//     int month;
+//     int day;
+//     int value;
+//     for (std::map<std::string, std::string>::iterator it = dateToData.begin(); it != dateToData.end(), it++) {
+//         try{
+//             if (it->first.empty())
+//                 throw Bitcoin::BadInputException(it->first + "|" + it->second);
+//             if (it->second.empty())
+//                 throw Bitcoin::BadInputException(it->first + "|" + it->second);
+//             if (dataCsv.find(it->first) != dataCsv.end())
+//                 std::cout << it->first << " => " << 
+//         }
+//         catch (std::exception &e) {
+//             e.what();
+//         }
+//     }
+// }
 
 
 const char *Bitcoin::DateUsageException::what(void) const throw() {
