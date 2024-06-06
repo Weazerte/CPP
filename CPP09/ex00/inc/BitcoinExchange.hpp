@@ -10,56 +10,23 @@
 
 class Bitcoin {
     private :
-    std::map<std::string, std::string> dataCsv;
-        std::map<std::string, std::string> dateToData;
-    
+        struct
+        {
+            float	value;
+            std::string date;
+        } LineData;
+        std::map<std::string, float> btcData;
+        Bitcoin(const Bitcoin &src);
+        Bitcoin &operator=(const Bitcoin &src);
     public:
         Bitcoin();
         ~Bitcoin();
-        Bitcoin(const Bitcoin &src);
-        Bitcoin &operator=(const Bitcoin &src);
 
         void readAndFill(std::string fileName);
-        bool parseDate(std::string& date);
+        void checkDate(int year, int month, int day);
+        int isLeapYear(int year);
         void fillData();
-        // void convert();
+        void findDateAndCalculate();
+        void checkValues(float value);
 
-        class NoSeparatorException : public std::exception {
-            private:
-                std::string message;
-            public:
-                NoSeparatorException(const std::string& line) {
-                    message = line + ": no separator";
-                }
-
-                virtual const char* what() const throw() {
-                    return message.c_str();
-                }
-
-        };
-
-        class NoSuchFileException : public std::exception {
-        private:
-            std::string message;
-        public:
-            NoSuchFileException(const std::string& fileName) {
-                message = fileName + ": no such file";
-            }
-
-            virtual const char* what() const throw() {
-                return message.c_str();
-            }
-        };
-
-        class BadInputException : public std::exception {
-            private:
-                std::string message;
-            public:
-                BadInputException(const std::string& input) {
-                    message = input + "Error : Bad input => ";
-                }
-                virtual const char* what() const throw() {
-                    return message.c_str();
-                }
-        };
 };

@@ -11,7 +11,8 @@ int main(int ac, char **av)
         Bitcoin data;
 
         try {
-            data.readAndPars(av[1]);
+            data.fillData();
+            data.readAndFill(av[1]);
         }
         catch (std::exception &e)
         {

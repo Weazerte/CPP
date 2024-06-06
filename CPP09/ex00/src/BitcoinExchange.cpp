@@ -9,9 +9,7 @@ Bitcoin::~Bitcoin() {
 }
 
 Bitcoin::Bitcoin(const Bitcoin &src) {
-    for (std::map<std::string, std::string>::const_iterator it = src.dateToData.begin(); it != src.dateToData.end(); it++) {
-        this->dateToData[it->first] = it->second;
-    }
+	*this = src;
 }
 
 Bitcoin& Bitcoin::operator=(const Bitcoin &src) {
@@ -20,83 +18,135 @@ Bitcoin& Bitcoin::operator=(const Bitcoin &src) {
     return *this;
 }
 
-bool Bitcoin::parseDate(std::string& date) {
-    for(int i = 0; date[i]; i++) {
-        std::cout << date << std::endl;
-        if ((i == 4 || i == 7) && date[i] == '-')
-            continue;
-        else if (std::isdigit(date[i]))
-            continue;
-        else{
-            std::cout << date[i] << std::endl;
-            return false;
-        }
-    }
-    return true;
+
+int Bitcoin::isLeapYear(int year)
+{
+	// todo : how?
+	bool ReturnValue = ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? true : false;
+	return (ReturnValue);
+}
+void Bitcoin::checkDate(int year, int month, int day)
+{
+	if (month < 1 || month > 12 || day < 1)
+		throw(std::string) "invalid date";
+	int months[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	if (month == 2 && (isLeapYear(year) == true))
+		months[1] = 29;
+	(day > months[month - 1]) ? throw(std::string) "invalid day" : 0;
+	if (year < 2009 || (year == 2009 && month == 1 && day < 2))
+	{
+		throw(std::string) "min year : (2009-01-02)";
+	}
+}
+
+void Bitcoin::checkValues(float value)
+{
+	if (value > 1000)
+		throw(std::string) "too large number.";
+	if (value < 0)
+		throw(std::string) "not a positive a number.";
 }
 
 void Bitcoin::fillData() {
     std::fstream fin;
     fin.open("data.csv", std::ios::in);
     if (!fin.is_open())
-        throw Bitcoin::NoSuchFileException("data.csv");
+        throw (std::string)"data.csv : file not found";
     std::string line;
-    fin >> line;
-    for (line; fin >> line;) {
+	if (!std::getline(fin, line)) {
+        throw std::runtime_error("data.csv : empty file");
+    }
+    while (std::getline(fin, line)) {
         size_t pos = line.find(",");
-        dataCsv[line.substr(0, pos)] = line.substr(pos + 1);
+        if (pos != std::string::npos) {
+            btcData.insert(std::make_pair(line.substr(0, pos), std::atof(line.substr(pos + 1).c_str())));
+        }
     }
     fin.close();
 }
 
-void Bitcoin::readAndfill(std::string fileName) {
-        std::fstream fin;
-        fin.open(fileName.c_str(), std::ios::in);
-        if (!fin.is_open())
-            throw Bitcoin::NoSuchFileException(fileName);
-        size_t pos;
-        std::string line;
-        fin >> line;
-        if (line != "date | valeur")
-            throw Bitcoin::BadInputException();
-        for (line; fin >> line;) { 
-            size_t pos = line.find("|");
-            if (pos == std::string::npos) {
-                throw Bitcoin::NoSeparatorException(line);
-                continue;
-            }
-            std::string valuestr = line.substr(pos + 1);
-            dateToData[line.substr(0, pos)] = valuestr;
-            std::cout << "date : " << line.substr(0, pos) << "     value : " << valuestr << std::endl; 
-        }
-        fin.close();
+void Bitcoin::readAndFill(std::string fileName)
+{
+	int year;
+	int month;
+	int day;
+	float value;
+	char extra;
+
+	std::string line;
+	std::ifstream file(fileName.c_str());
+	if (!file.is_open())
+		throw(std::string) "cannot open file";
+	// std::cout << line << std::endl;
+	getline(file, line);
+	if (line != "date | value")
+		throw(std::string) "Invalid first line in data file. Expected 'date | value'.";
+	bool firstLine = true;
+	while (getline(file, line))
+	{
+		if (firstLine)
+			firstLine = false;
+		if (line.length() < 14)
+		{
+			std::cout << "Error : bad input => " << line << std::endl;
+			continue;
+		}
+		else if (sscanf((line.c_str()), "%d-%d-%d | %f%c", &year, &month, &day,
+						&value, &extra) == 4)
+		{
+			if (std::isspace(line[13]) || line[11] != '|' || line[line.length() - 1] == '.')
+			{
+
+				std::cout << "Error : bad input => " << line << std::endl;
+				continue;
+			}
+			try
+			{
+				checkValues(value);
+				checkDate(year, month, day);
+			}
+			catch (std::string error)
+			{
+				std::cout << "Error: " << error << std::endl;
+				continue;
+			}
+		}
+		else
+		{
+			std::cout << "Error : bad input => " << line << std::endl;
+			continue;
+		}
+		size_t pos;
+
+		pos = line.find(' ');
+		LineData.date = line.substr(0, pos);
+		LineData.value = value;
+		findDateAndCalculate();
+	}
+	if (firstLine)
+		throw(std::string) "file is empty";
 }
 
-// void Bitcoin::convert() {
-//     int year;
-//     int month;
-//     int day;
-//     int value;
-//     for (std::map<std::string, std::string>::iterator it = dateToData.begin(); it != dateToData.end(), it++) {
-//         try{
-//             if (it->first.empty())
-//                 throw Bitcoin::BadInputException(it->first + "|" + it->second);
-//             if (it->second.empty())
-//                 throw Bitcoin::BadInputException(it->first + "|" + it->second);
-//             if (dataCsv.find(it->first) != dataCsv.end())
-//                 std::cout << it->first << " => " << 
-//         }
-//         catch (std::exception &e) {
-//             e.what();
-//         }
-//     }
-// }
-
-
-const char *Bitcoin::DateUsageException::what(void) const throw() {
-    return "Usage : YYYY/MM/DD";
-}
-
-const char *Bitcoin::ValueUsageException::what(void) const throw() {
-    return "Value has to be between 0 and 1000";
+void Bitcoin::findDateAndCalculate()
+{
+	std::map<std::string, float>::iterator it;
+	it = this->btcData.lower_bound(LineData.date);
+	if (it == this->btcData.end())
+	{
+		it--;
+		std::cout << LineData.date << " => " << LineData.value << " = " << LineData.value * (*it).second << std::endl;
+		return;
+	}
+	if (it == this->btcData.begin())
+	{
+		std::cerr << "cannot find any closer data" << std::endl;
+		return;
+	}
+	else
+	{
+		if ((*it).first != LineData.date)
+			it--;
+		std::cout << LineData.date << " => " << LineData.value << " = " << (float)(LineData.value * (*it).second) << std::endl;
+	}
 }
