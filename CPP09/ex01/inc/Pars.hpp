@@ -2,15 +2,16 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <stack>
 
 class Pars {
     private:
-        
+        std::stack<double> numbers;
+
+    public:
         Pars();
         Pars(Pars const &src);
         Pars & operator=(Pars const &src);
-    public:
-        Pars(std::string input);
         ~Pars();
+        void calculate(std::string input);
 };

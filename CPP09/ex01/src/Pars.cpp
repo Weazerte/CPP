@@ -7,18 +7,73 @@ Pars::Pars(Pars const &src){
 }
 
 Pars & Pars::operator=(Pars const &src){
-
-}
-
-Pars::Pars(std::string input){
-    if (wrongInput(input))
-        throw std::ErrorExcption();
-    std::vector<char, std::vector<std::string, std::string>> signToDigit;
-    int i = 0;
-    while (input[i]){
-        
-        i++;
-    }
+    if (this != &src)
+        return *this;
+    return *this;
 }
 
 Pars::~Pars(){}
+
+void Pars::calculate(std::string input)
+{
+	for (size_t i = 0; i < input.size(); i++)
+	{
+		char c = input[i];
+
+		if (c == ' ')
+			continue;
+		else if (isdigit(c))
+		{
+			int number = c - '0';
+			numbers.push(number);
+		}
+		else if (c == '+' && numbers.size() >= 2)
+		{
+			double b = numbers.top();
+			numbers.pop();
+			double a = numbers.top();
+			numbers.pop();
+			numbers.push(a + b);
+		}
+		else if (c == '-' && numbers.size() >= 2)
+		{
+			double b = numbers.top();
+			numbers.pop();
+			double a = numbers.top();
+			numbers.pop();
+			numbers.push(a - b);
+		}
+		else if (c == '*' && numbers.size() >= 2)
+		{
+			double b = numbers.top();
+			numbers.pop();
+			double a = numbers.top();
+			numbers.pop();
+			numbers.push(a * b);
+		}
+		else if (c == '/' && numbers.size() >= 2)
+		{
+			double b = numbers.top();
+			numbers.pop();
+			double a = numbers.top();
+			numbers.pop();
+			numbers.push(a / b);
+		}
+		else
+		{
+			std::cout << "Invalid input." << std::endl;
+			return;
+		}
+	}
+
+	if (numbers.size() == 1)
+	{
+		double result = numbers.top();
+		numbers.pop();
+		std::cout << "Result: " << result << std::endl;
+	}
+	else
+	{
+		std::cout << "Invalid input." << std::endl;
+	}
+}
