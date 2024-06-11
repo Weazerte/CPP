@@ -6,13 +6,14 @@
 #    By: eaubry <eaubry@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:48:26 by eaubry            #+#    #+#              #
-#    Updated: 2024/06/11 14:11:55 by eaubry           ###   ########.fr        #
+#    Updated: 2024/06/11 15:17:13 by eaubry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = MutantStack
+NAME = PmergeMe
 
 SRCS =	main.cpp \
+		MergeI.cpp \
 
 CC          = c++
 CFLAGS      = -Wall -Wextra -Werror -g3 -std=c++98
