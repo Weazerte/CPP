@@ -16,7 +16,7 @@ void PmergeMe::mergeInsertSortVector(std::vector<int> &container, int start, int
     int newEnd;
     if (start < end)
     {
-        if ((end - start) < 10)
+        if ((end - start) < 3)
             insertSortVector(container, start, end);
         else
         {
@@ -83,7 +83,7 @@ void PmergeMe::mergeInsertSortDeque(std::deque<int> &container, int start, int e
     int newEnd;
     if (start < end)
     {
-        if ((end - start) < 10)
+        if ((end - start) < 3)
             insertSortDeque(container, start, end);
         else
         {
@@ -159,9 +159,7 @@ void print(std::vector<int> &Vec, std::deque<int> &Deq)
         std::cout << BLUE << "Vector "  << "befor : " << BEFOR;
     else
         std::cout << BLUE << "Vector "<< "after : " << AFTER; 
-
-    typedef typename std::vector<int>::const_iterator Viterator;
-    for (Viterator Vit = Vec.begin(); Vit != Vec.end(); ++Vit)
+    for (std::vector<int>::iterator Vit = Vec.begin(); Vit != Vec.end(); ++Vit)
 		std::cout << *Vit << " ";
     std::cout << std::endl;
 
@@ -169,8 +167,7 @@ void print(std::vector<int> &Vec, std::deque<int> &Deq)
         std::cout << BLUE << "Deque " << " befor : " << BEFOR ;
     else
         std::cout << BLUE << "Deque "  << " after : " << AFTER;
-    typedef typename std::deque<int>::const_iterator Diterator;
-    for (Diterator Dit = Deq.begin(); Dit != Deq.end(); ++Dit)
+    for (std::deque<int>::iterator Dit = Deq.begin(); Dit != Deq.end(); ++Dit)
 		std::cout << *Dit << " ";
     std::cout << std::endl;
     i++;
