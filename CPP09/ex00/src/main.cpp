@@ -7,16 +7,15 @@
 
 int main(int ac, char **av)
 {
-    if (ac == 2){
+    try {
+        if (ac == 2){
         Bitcoin data;
-
-        try {
-            data.fillData();
-            data.readAndFill(av[1]);
+        data.fillData();
+        data.readAndFill(av[1]);
         }
-        catch (std::exception &e)
-        {
-            std::cout << e.what() << std::endl;
-        }
+    }
+    catch (std::string e)
+    {
+        std::cout << e << std::endl;
     }
 }

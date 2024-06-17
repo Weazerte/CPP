@@ -80,6 +80,8 @@ void Bitcoin::readAndFill(std::string fileName)
 		throw(std::string) "cannot open file";
 	// std::cout << line << std::endl;
 	getline(file, line);
+	if (line.empty())
+		throw (std::string) "Error : Empty file";
 	if (line != "date | value")
 		throw(std::string) "Invalid first line in data file. Expected 'date | value'.";
 	bool firstLine = true;
